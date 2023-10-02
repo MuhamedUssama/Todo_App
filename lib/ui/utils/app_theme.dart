@@ -17,20 +17,23 @@ abstract class AppTheme {
       fontWeight: FontWeight.bold, fontSize: 20, color: AppColors.text);
 
   static ThemeData lightTheme = ThemeData(
-    primaryColor: AppColors.primary,
-    appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.primary,
-      elevation: 0,
-      titleTextStyle: appBarTextStyle,
-    ),
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      selectedIconTheme: IconThemeData(size: 32),
-      unselectedIconTheme: IconThemeData(size: 32),
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      selectedItemColor: AppColors.primary,
-      unselectedItemColor: AppColors.unClickedIcon,
-    ),
-    scaffoldBackgroundColor: AppColors.accent,
-  );
+      primaryColor: AppColors.primary,
+      appBarTheme: const AppBarTheme(
+        backgroundColor: AppColors.primary,
+        elevation: 0,
+        titleTextStyle: appBarTextStyle,
+      ),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        selectedIconTheme: IconThemeData(size: 32),
+        unselectedIconTheme: IconThemeData(size: 32),
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        selectedItemColor: AppColors.primary,
+        unselectedItemColor: AppColors.unClickedIcon,
+      ),
+      scaffoldBackgroundColor: AppColors.accent,
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        shape:
+            StadiumBorder(side: BorderSide(color: AppColors.white, width: 4)),
+      ));
 }

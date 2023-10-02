@@ -9,7 +9,7 @@ abstract class AppColors {
   static const Color delete = Color(0xffec4b4b);
   static const Color text = Colors.black;
   static const Color lightBlackText = Color(0xff363636);
-  static const Color unClickedIcon = Color(0x0fffffff);
+  static const Color unClickedIcon = Colors.grey;
   static const Color primaryDark = primary;
   static const Color accentDark = Color(0xff060e1e);
   static const Color cardsDark = Color(0xff141922);
