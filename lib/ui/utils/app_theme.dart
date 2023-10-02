@@ -35,5 +35,9 @@ abstract class AppTheme {
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         shape:
             StadiumBorder(side: BorderSide(color: AppColors.white, width: 4)),
+      ),
+      dividerTheme: const DividerThemeData(
+        thickness: 4,
+        color: AppColors.primary,
       ));
 }
