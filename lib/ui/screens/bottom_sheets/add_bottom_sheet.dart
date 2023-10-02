@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/ui/utils/app_colors.dart';
 import 'package:todo_app/ui/utils/app_theme.dart';
+import 'package:todo_app/ui/widgets/custom_text_filed.dart';
 
 class AddBottomSheet extends StatelessWidget {
   const AddBottomSheet({super.key});
@@ -21,11 +22,11 @@ class AddBottomSheet extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-          const TextField(),
+          CustomTextField(hintText: "Your Task Name"),
           const SizedBox(
             height: 8,
           ),
-          const TextField(),
+          CustomTextField(hintText: "Enter Task Details"),
           const SizedBox(
             height: 16,
           ),

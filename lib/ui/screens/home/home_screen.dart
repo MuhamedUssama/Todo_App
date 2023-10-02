@@ -44,7 +44,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget buildFloatingActionBottun() => FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
-              context: context, builder: (_) => AddBottomSheet());
+              isScrollControlled: true,
+              context: context,
+              builder: (_) => Padding(
+                    padding: MediaQuery.of(context).viewInsets,
+                    child: const AddBottomSheet(),
+                  ));
         },
         child: const Icon(Icons.add),
       );
