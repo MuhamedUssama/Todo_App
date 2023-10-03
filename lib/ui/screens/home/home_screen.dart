@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
               context: context,
               builder: (_) => Padding(
                     padding: MediaQuery.of(context).viewInsets,
-                    child: const AddBottomSheet(),
+                    child: AddBottomSheet(),
                   ));
         },
         child: const Icon(Icons.add),

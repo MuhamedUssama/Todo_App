@@ -3,8 +3,17 @@ import 'package:todo_app/ui/utils/app_colors.dart';
 import 'package:todo_app/ui/utils/app_theme.dart';
 import 'package:todo_app/ui/widgets/custom_text_filed.dart';
 
-class AddBottomSheet extends StatelessWidget {
-  const AddBottomSheet({super.key});
+class AddBottomSheet extends StatefulWidget {
+  AddBottomSheet({super.key});
+
+  @override
+  State<AddBottomSheet> createState() => _AddBottomSheetState();
+}
+
+class _AddBottomSheetState extends State<AddBottomSheet> {
+  TextEditingController titleController = TextEditingController();
+  TextEditingController detailsController = TextEditingController();
+  DateTime selectedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +31,13 @@ class AddBottomSheet extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-          CustomTextField(hintText: "Your Task Name"),
+          CustomTextField(
+              hintText: "Your Task Name", controller: titleController),
           const SizedBox(
             height: 8,
           ),
-          CustomTextField(hintText: "Enter Task Details"),
+          CustomTextField(
+              hintText: "Enter Task Details", controller: detailsController),
           const SizedBox(
             height: 16,
           ),
@@ -38,16 +49,38 @@ class AddBottomSheet extends StatelessWidget {
           const SizedBox(
             height: 8,
           ),
-          Text(
-            "1/10/2023",
-            style: AppTheme.bottomSheetTextStyle.copyWith(
-                fontWeight: FontWeight.w400, color: AppColors.unClickedIcon),
-            textAlign: TextAlign.center,
+          InkWell(
+            onTap: () {
+              showMyDateClicker();
+            },
+            child: Text(
+              "${selectedDate.day}/${selectedDate.month}/${selectedDate.year}",
+              style: AppTheme.bottomSheetTextStyle.copyWith(
+                  fontWeight: FontWeight.w400, color: AppColors.unClickedIcon),
+              textAlign: TextAlign.center,
+            ),
           ),
           const Spacer(),
-          ElevatedButton(onPressed: () {}, child: const Text("Add"))
+          ElevatedButton(
+            onPressed: () {
+              addToDoFireStore();
+            },
+            child: const Text("Add"),
+          )
         ],
       ),
     );
+  }
+
+  void addToDoFireStore() {}
+
+  void showMyDateClicker() async {
+    selectedDate = await showDatePicker(
+            context: context,
+            initialDate: selectedDate,
+            firstDate: DateTime.now(),
+            lastDate: DateTime.now().add(const Duration(days: 365))) ??
+        selectedDate;
+    setState(() {});
   }
 }
