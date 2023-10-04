@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_app/models/tasks_dm.dart';
 import 'package:todo_app/ui/utils/app_colors.dart';
 import 'package:todo_app/ui/utils/app_theme.dart';
 import 'package:todo_app/ui/widgets/custom_text_filed.dart';
@@ -72,7 +74,25 @@ class _AddBottomSheetState extends State<AddBottomSheet> {
     );
   }
 
-  void addToDoFireStore() {}
+  void addToDoFireStore() {
+    CollectionReference todoCollectionRef =
+        FirebaseFirestore.instance.collection(TasksDm.collectionName);
+
+    DocumentReference newEmptyTask = todoCollectionRef.doc();
+
+    newEmptyTask.set({
+      "id": newEmptyTask.id,
+      "title": titleController.text,
+      "detials": detailsController.text,
+      "date": selectedDate,
+      "isDone": false,
+    }).timeout(
+      Duration(seconds: 1),
+      onTimeout: () {
+        Navigator.pop(context);
+      },
+    );
+  }
 
   void showMyDateClicker() async {
     selectedDate = await showDatePicker(

@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
-      body: currentSelectedIndex == 0 ? const ListTab() : const SettingTab(),
+      body: currentSelectedIndex == 0 ? ListTab() : const SettingTab(),
       bottomNavigationBar: buildBottomNav(),
       floatingActionButton: buildFloatingActionBottun(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

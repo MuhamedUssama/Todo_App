@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:todo_app/models/tasks_dm.dart';
 import 'package:todo_app/ui/utils/app_colors.dart';
 import 'package:todo_app/ui/utils/app_theme.dart';
 
 class TaskWedgit extends StatelessWidget {
-  const TaskWedgit({super.key});
+  final TasksDm model;
+
+  const TaskWedgit({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -32,24 +35,28 @@ class TaskWedgit extends StatelessWidget {
           child: Row(
             children: [
               const VerticalDivider(),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Play basket ball",
+                      model.title,
                       style: AppTheme.taskTitleTextStyle,
                     ),
+                    // Text(
+                    //   model.details,
+                    //   style: AppTheme.taskDescriptionTextStyle,
+                    // ),
                     Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.sunny,
                           color: Colors.yellow,
                         ),
                         Text(
-                          "10:30 AM",
+                          model.date.toString(),
                           style: AppTheme.taskDescriptionTextStyle,
                         ),
                       ],
